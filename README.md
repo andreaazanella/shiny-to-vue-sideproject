@@ -1,21 +1,14 @@
-# shiny-to-vue-sideproject
-Esempio di traslazione di R-Shiny in R-Plumber-Vue.js
-
 # shiny-to-vue
 
-Dimostrazione pratica di migrazione da R Shiny a un'architettura
-disaccoppiata **R + Plumber + Vue.js**.
+Dimostrazione pratica di migrazione da **R Shiny** a un'architettura disaccoppiata **R + Plumber + Vue.js**.
 
-Realizzato come mini-progetto preliminare alla tesi triennale in
-Ingegneria Informatica presso l'Università di Padova (IN0508).
+Realizzato come mini-progetto preliminare alla tesi triennale in Ingegneria Informatica presso l'Università di Padova (IN0508).
 
 ---
 
 ## Il problema
 
-R Shiny è un framework potente per creare applicazioni data-driven,
-ma accoppia fortemente logica di calcolo e interfaccia utente nello stesso
-codice R. Questo rende difficile:
+R Shiny è un framework potente per creare applicazioni data-driven, ma accoppia fortemente logica di calcolo e interfaccia utente nello stesso codice R. Questo rende difficile:
 
 - modificare l'interfaccia senza toccare la logica
 - esporre i dati ad altri sistemi
@@ -31,7 +24,6 @@ Il frontend Vue si occupa esclusivamente della visualizzazione.
 Comunicano tramite HTTP con dati JSON.
 
 ## Struttura del repository
-
 shiny-to-vue/
 ├── backend/
 │   ├── .Rhistory    ← comandi per eseguire codice in R con RStudio
@@ -58,24 +50,32 @@ shiny-to-vue/
 ├── architecture.md  ← spiegazione delle scelte architetturali
 └── api-spec.md      ← documentazione degli endpoint
 
+## Avvio in sviluppo
+
 ### Prerequisiti
+
 - R + RStudio con pacchetto `plumber` installato
 - Node.js
 
 ### Backend
-# In RStudio
+Apri RStudio ed esegui nella console:
+
+```r
 install.packages("plumber")   # solo la prima volta
 
 setwd("path/to/shiny-to-vue/backend")
 library(plumber)
 pr <- plumb("api.R")
 pr$run(port = 8000)
+```
 
 ### Frontend
 
+```bash
 cd frontend
-npm install
+npm install        # solo la prima volta
 npm run dev
+```
 
 L'app è disponibile su `http://localhost:5173`.
 Il backend deve essere in esecuzione su `http://localhost:8000`.
