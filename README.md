@@ -24,6 +24,8 @@ Il frontend Vue si occupa esclusivamente della visualizzazione.
 Comunicano tramite HTTP con dati JSON.
 
 ## Struttura del repository
+
+```txt
 shiny-to-vue/
 ├── backend/
 │   ├── .Rhistory    ← comandi per eseguire codice in R con RStudio
@@ -49,6 +51,7 @@ shiny-to-vue/
 │       └── s02.png  
 ├── architecture.md  ← spiegazione delle scelte architetturali
 └── api-spec.md      ← documentazione degli endpoint
+```
 
 ## Avvio in sviluppo
 
