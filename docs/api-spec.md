@@ -10,9 +10,11 @@ Restituisce i dati necessari per disegnare un istogramma dei tempi di attesa
 del geyser Old Faithful (dataset `faithful` incluso in R).
 
 ### Esempio di richiesta
+
 GET /histogram?bins=10
 
 ### Esempio di risposta
+
 {
   "counts": [4, 3, 10, 15, 7, 4, 13, 26, 18, 8],
   "breaks": [43.0, 48.3, 53.6, 58.9, 64.2, 69.5, 74.8, 80.1, 85.4, 90.7, 96.0],
