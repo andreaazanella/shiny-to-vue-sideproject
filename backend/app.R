@@ -1,3 +1,7 @@
+# app.R — Applicazione Shiny originale, mantenuta come riferimento.
+# Questo file NON fa parte dell'architettura finale.
+# È il punto di partenza da cui è stata estratta la logica in logic.R
+
 library(shiny)
 library(bslib)
 
