@@ -1,13 +1,49 @@
 <template>
   <div class="app">
-    <h1>Hello Vue! <span>(migrato da Shiny)</span></h1>
+  <img src="./assets/background.png" class="bg-texture" alt="" draggable="false" />
+  
+    <!-- DIV 1: Header centrale, senza bordi -->
+    <header class="card-header">
+      <h1>Hello Vue!</h1>
+      <div class="subtitle">
+        <span class="subtitle-text">migrato da</span>
+        <span class="shiny-badge">
+          <img src="./assets/shiny-logo.svg" alt="Shiny logo"/>
+        </span>
+      </div>
+    </header>
 
-    <BinsSlider v-model="bins" />
+    <!-- Riga inferiore: slider + istogramma -->
+    <div class="bottom-row">
 
-    <div v-if="loading" class="status">Caricamento...</div>
-    <div v-else-if="error" class="status error">Errore: {{ error }}</div>
-    
-    <Histogram v-else-if="histData" :data="histData" />
+      <!-- DIV 2: Slider -->
+      <div class="card card-slider">
+        <p class="card-label">Numero di intervalli</p>
+        <hr class="card-divider" />
+        <p class="bins-number">{{ bins }}</p>
+
+        <BinsSlider v-model="bins" />
+
+        <div class="slider-note">
+          <span class="material-symbols-outlined">info</span>
+          <span>Aggiusta il numero di intervalli</span>
+        </div>
+      </div>
+
+      <!-- DIV 3: Istogramma -->
+      <div class="card card-histogram">
+        <p class="card-label">Istogramma tempi di attesa</p>
+        <hr class="card-divider" />
+
+        <div v-if="error" class="status error">Errore: {{ error }}</div>
+        <Histogram
+          v-else-if="histData"
+          :data="histData"
+          :class="{ 'is-loading': loading }"
+        />
+</div>
+
+    </div>
   </div>
 </template>
 
@@ -34,39 +70,6 @@ async function loadData() {
   }
 }
 
-// Carica i dati all'avvio
 onMounted(loadData)
-
-// Ricarica ogni volta che bins cambia
 watch(bins, loadData)
 </script>
-
-<style>
-body {
-  font-family: sans-serif;
-  background: #f5f5f5;
-  margin: 0;
-}
-
-.app {
-  max-width: 700px;
-  margin: 40px auto;
-  background: white;
-  padding: 32px;
-  border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
-}
-
-h1 { color: #007bc2; }
-h1 span { font-size: 0.6em; color: #999; font-weight: normal; }
-h2 { font-size: 1em; color: #333; margin-bottom: 8px; }
-
-.slider-container { margin: 24px 0; }
-.slider-container label { display: block; margin-bottom: 8px; }
-input[type="range"] { width: 100%; }
-
-.chart-container svg { width: 100%; height: auto; }
-
-.status { padding: 20px; text-align: center; color: #666; }
-.error { color: #c00; }
-</style>
