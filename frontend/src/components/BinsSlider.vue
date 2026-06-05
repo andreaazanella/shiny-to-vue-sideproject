@@ -34,7 +34,7 @@ function onInput(e) {
 const trackStyle = computed(() => {
   const pct = ((props.modelValue - 1) / (50 - 1)) * 100
   return {
-    background: `linear-gradient(to right, #ebfbe4 ${pct}%, rgba(0,73,48,0.15) ${pct}%)`
+    background: `linear-gradient(to right, #ebfbe4 ${pct}%, rgba(0,73,48,0.15) ${100 - pct}%)`
   }
 })
 </script>

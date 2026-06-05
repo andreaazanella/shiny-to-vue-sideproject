@@ -39,7 +39,6 @@
         <Histogram
           v-else-if="histData"
           :data="histData"
-          :class="{ 'is-loading': loading }"
         />
 </div>
 
