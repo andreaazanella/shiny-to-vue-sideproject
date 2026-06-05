@@ -82,3 +82,11 @@ npm run dev
 
 L'app è disponibile su `http://localhost:5173`.
 Il backend deve essere in esecuzione su `http://localhost:8000`.
+
+## Anteprima
+
+Prima
+![App Shiny](docs/screenshots/shiny-original.png)
+
+Dopo
+![App Vue](docs/screenshots/vue-migrated.png)
